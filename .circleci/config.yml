@@ -7,7 +7,10 @@ jobs:
       - image: cimg/python:3.12.6
     steps:
       - checkout
-      - run: python --version
+      - run:
+          command:
+            pip install pytest
+            pytest --junitxml=test-results/junit.xml TestTriangle.py
       - store_test_results:
       path: test-results
 
